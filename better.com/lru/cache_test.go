@@ -3,8 +3,8 @@ package lru_test
 import (
 	"testing"
 
-	"better.com/lru"
 	"github.com/stretchr/testify/require"
+	"interviews/better.com/lru"
 )
 
 func TestCache(t *testing.T) {

@@ -3,8 +3,8 @@ package list_test
 import (
 	"testing"
 
-	"better.com/list"
 	"github.com/stretchr/testify/require"
+	"interviews/better.com/list"
 )
 
 func TestDoublyLinkedList(t *testing.T) {

@@ -1,7 +1,7 @@
 package lru
 
 import (
-	"better.com/list"
+	"interviews/better.com/list"
 )
 
 type DoublyLinkedListBacked struct {
