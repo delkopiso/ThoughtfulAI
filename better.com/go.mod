@@ -1,4 +1,4 @@
-module interviews
+module interviews/better.com
 
 go 1.13
 
