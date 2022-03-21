@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: postgres:alpine
+    environment:
+      POSTGRES_DB: metrics-db
+      POSTGRES_PASSWORD: super-secret
+      POSTGRES_USER: metrics-user
+    expose:
+      - 5432
+
+  rabbitmq:
+    image: rabbitmq:management
+    expose:
+      - 5672
+
+  api:
+    build: api
+    environment:
+      AMQP_URL: amqp://guest:guest@rabbitmq:5672
+      DB_URL: postgresql://db:5432/metrics-db?ssl_mode=disable&user=metrics-user&password=super-secret
+      PORT: 8081
+      RABBIT_EXCHANGE: montecarlo
+      RABBIT_QUEUE: create-prices
+      RABBIT_ROUTING_KEY: prices.#
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+      - rabbitmq
+
+  originator:
+    build: originator
+    environment:
+      AMQP_URL: amqp://guest:guest@rabbitmq:5672
+      CRYPTOWATCH_MARKETS_URL: https://api.cryptowat.ch/markets/kraken
+      RABBIT_EXCHANGE: montecarlo
+      RABBIT_ROUTING_KEY: prices.generated
+    depends_on:
+      - api
+
+networks:
+  default:
+    name: montecarlo
