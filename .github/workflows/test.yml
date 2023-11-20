@@ -4,6 +4,22 @@ on: push
 
 jobs:
 
+  albert:
+    name: albert
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: albert
+    steps:
+      - uses: actions/setup-go@v1
+        with:
+          go-version: 1.21
+        id: go
+      - uses: actions/checkout@v2
+      - run: go mod download
+      - run: go vet ./...
+      - run: go test ./...
+
   better:
     name: better.com
     runs-on: ubuntu-latest

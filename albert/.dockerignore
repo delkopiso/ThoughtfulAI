@@ -1,0 +1,17 @@
+# Ignore everything
+*
+
+# But descend into directories...
+!*/
+
+# ...and allow files under these subtrees
+!/assets/**
+/assets/public/javascript/**
+!/cmd/**
+!/internal/**
+!/tools/*.go
+!/views/**
+
+# ...along with these specific files
+!go.sum
+!go.mod

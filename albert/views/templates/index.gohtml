@@ -1,0 +1,15 @@
+{{define "content"}}
+    <div class="container">
+        <section class="search">
+            <label for="search"></label>
+            <input id="search" type="search"
+                   name="search" placeholder="Begin typing to search stocks..."
+                   data-hx-post="/securities"
+                   data-hx-trigger="input changed delay:500ms, search"
+                   data-hx-target="#search-results"/>
+            <div id="search-results"></div>
+        </section>
+        <section class="watch-list" data-hx-get="/watchlist" data-hx-trigger="load, every 5s">
+        </section>
+    </div>
+{{end}}

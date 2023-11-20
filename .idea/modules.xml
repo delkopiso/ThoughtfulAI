@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/interviews.iml" filepath="$PROJECT_DIR$/interviews.iml" />
+      <module fileurl="file://$PROJECT_DIR$/albert/interviews.albert.iml" filepath="$PROJECT_DIR$/albert/interviews.albert.iml" />
+      <module fileurl="file://$PROJECT_DIR$/better.com/interviews.better.com.iml" filepath="$PROJECT_DIR$/better.com/interviews.better.com.iml" />
+      <module fileurl="file://$PROJECT_DIR$/montecarlo/interviews.montecarlo.iml" filepath="$PROJECT_DIR$/montecarlo/interviews.montecarlo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/montecarlo/api/interviews.montecarlo.api.iml" filepath="$PROJECT_DIR$/montecarlo/api/interviews.montecarlo.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/montecarlo/originator/interviews.montecarlo.originator.iml" filepath="$PROJECT_DIR$/montecarlo/originator/interviews.montecarlo.originator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rupa-health/interviews.rupa-health.iml" filepath="$PROJECT_DIR$/rupa-health/interviews.rupa-health.iml" />
+      <module fileurl="file://$PROJECT_DIR$/slang/interviews.slang.iml" filepath="$PROJECT_DIR$/slang/interviews.slang.iml" />
+    </modules>
+  </component>
+</project>

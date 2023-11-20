@@ -1,0 +1,26 @@
+# Ignore everything
+*
+
+# But descend into directories...
+!*/
+
+# ...and allow files under these subtrees...
+!/assets/**
+/assets/public/javascript/**
+!/assets/public/javascript/.gitignore
+!/cmd/**
+!/internal/**
+!/tools/*.go
+!/views/**
+
+# ...and allow these specific files
+!.dockerignore
+!.env.sample
+!.gitignore
+!docker-compose.yml
+!Dockerfile
+!go.sum
+!go.mod
+!Makefile
+!README.md
+!SOLUTION.md

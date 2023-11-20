@@ -1,0 +1,28 @@
+<table>
+    <thead>
+    <tr>
+        <th>Ticker</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {{$csrfName := .CsrfName}}
+    {{$csrfToken := .CsrfToken}}
+    {{range $item := .Watchlist}}
+        <tr>
+            <td>{{$item.Ticker}}</td>
+            <td>{{$item.Name}}</td>
+            <td>{{$item.LastPrice}}</td>
+            <td class="actions">
+                <form action="/watchlist/remove" method="post" data-hx-boost="true">
+                    <input type="hidden" name="{{$csrfName}}" value="{{$csrfToken}}">
+                    <input type="hidden" name="ticker" value="{{$item.Ticker}}">
+                    <button type="submit">Unwatch</button>
+                </form>
+            </td>
+        </tr>
+    {{end}}
+    </tbody>
+</table>

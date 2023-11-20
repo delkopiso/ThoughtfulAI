@@ -1,0 +1,16 @@
+{{define "content"}}
+    <div class="login-form">
+        <form action="/auth/login" method="post" data-hx-boost="true">
+            <h2>Log in</h2>
+            <div class="inputs">
+                <input type="hidden" name="{{.CsrfName}}" value="{{.CsrfToken}}">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" name="username" value="{{.Username}}"/>
+                {{if .ValidationError}}
+                    <p class="error">{{.ValidationError}}</p>
+                {{end}}
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+{{end}}

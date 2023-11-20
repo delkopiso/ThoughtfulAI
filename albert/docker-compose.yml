@@ -1,0 +1,79 @@
+x-env: &app-env
+  environment:
+    ALBERT_API_KEY: ${ALBERT_API_KEY}
+    ALBERT_CSRF_KEY: ${ALBERT_CSRF_KEY}
+    ALBERT_DATABASE_URL: ${ALBERT_DATABASE_URL}
+    ALBERT_WEB_ADDRESS: ${ALBERT_WEB_ADDRESS}
+    ALBERT_LOAD_STOCK_FREQUENCY: ${ALBERT_LOAD_STOCK_FREQUENCY}
+    ALBERT_LOAD_PRICES_FREQUENCY: ${ALBERT_LOAD_PRICES_FREQUENCY}
+    ALBERT_PRICE_MAX_AGE: ${ALBERT_PRICE_MAX_AGE}
+
+services:
+  web:
+    <<: *app-env
+    build:
+      context: .
+      target: web
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: [ "CMD", "curl", "-I", "http://localhost:8000/health" ]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15-alpine3.18
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-U", "postgres", "-d", "postgres" ]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+
+  create-users:
+    image: postgres:15-alpine3.18
+    entrypoint: psql -c "insert into users(user_id, email) values ('user1', 'user1@casestudy.com'), ('user2', 'user2@casestudy.com') on conflict do nothing;"
+    environment:
+      PGHOST: db
+      PGDATABASE: postgres
+      PGUSER: postgres
+      PGPASSWORD: postgres
+    depends_on:
+      web:
+        condition: service_healthy
+
+  load-prices:
+    <<: *app-env
+    build:
+      context: .
+      target: load-prices
+    depends_on:
+      create-users:
+        condition: service_completed_successfully
+      web:
+        condition: service_healthy
+
+  load-securities:
+    <<: *app-env
+    build:
+      context: .
+      target: load-securities
+    depends_on:
+      create-users:
+        condition: service_completed_successfully
+      web:
+        condition: service_healthy
+
+volumes:
+    postgres_data:

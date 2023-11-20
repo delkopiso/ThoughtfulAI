@@ -1,0 +1,27 @@
+{{if not .Securities}}
+    {{if .Message}}{{.Message}}{{else}}<p>No matching securities found. Please change your search term.</p>{{end}}
+{{else}}
+<table class="results">
+    <tbody>
+    {{$csrfName := .CsrfName}}
+    {{$csrfToken := .CsrfToken}}
+    {{range $security := .Securities}}
+        <tr>
+            <td>{{$security.Ticker}}</td>
+            <td>{{$security.Name}}</td>
+            <td>
+                {{if $security.Watched}}
+                    <button type="button" disabled>Watched</button>
+                {{else}}
+                    <form action="/watchlist/add" method="post" data-hx-boost="true">
+                        <input type="hidden" name="{{$csrfName}}" value="{{$csrfToken}}">
+                        <input type="hidden" name="ticker" value="{{$security.Ticker}}">
+                        <button type="submit">Watch</button>
+                    </form>
+                {{end}}
+            </td>
+        </tr>
+    {{end}}
+    </tbody>
+</table>
+{{end}}
