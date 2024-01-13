@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Lister</title>
+</head>
+<body>
+<ul>
+{{range $entry := .Entries}}
+  <li>{{$entry}}</li>
+{{else}}
+  No entries in {{.FolderName}}
+{{end}}
+</ul>
+</body>
+</html>
