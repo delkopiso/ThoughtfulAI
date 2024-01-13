@@ -1,0 +1,37 @@
+[
+  {
+    "startTimestamp": "2021-03-02T12:06:00Z",
+    "endTimestamp": "2021-03-02T13:00:00Z",
+    "eventCount": 2512
+  },
+  {
+    "startTimestamp": "2021-03-02T13:00:00Z",
+    "endTimestamp": "2021-03-02T14:00:00Z",
+    "eventCount": 3354
+  },
+  {
+    "startTimestamp": "2021-03-02T14:00:00Z",
+    "endTimestamp": "2021-03-02T15:00:00Z",
+    "eventCount": 2794
+  },
+  {
+    "startTimestamp": "2021-03-02T15:00:00Z",
+    "endTimestamp": "2021-03-02T16:00:00Z",
+    "eventCount": 7302
+  },
+  {
+    "startTimestamp": "2021-03-02T16:00:00Z",
+    "endTimestamp": "2021-03-02T17:00:00Z",
+    "eventCount": 3968
+  },
+  {
+    "startTimestamp": "2021-03-02T17:00:00Z",
+    "endTimestamp": "2021-03-02T18:00:00Z",
+    "eventCount": 1057
+  },
+  {
+    "startTimestamp": "2021-03-02T18:00:00Z",
+    "endTimestamp": "2021-03-02T18:06:00Z",
+    "eventCount": 85
+  }
+]
