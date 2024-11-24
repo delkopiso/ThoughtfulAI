@@ -1,3 +1,3 @@
-module ThoughtfulAutomation
+module ThoughtfulAI
 
 go 1.23

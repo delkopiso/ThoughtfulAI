@@ -1,4 +1,4 @@
-= ThoughtfulAutomation
+= ThoughtfulAI
 :toc:
 :icons: font
 
